@@ -1,4 +1,4 @@
-# 1.javac Hello.java
+# 1.javac -g Hello.java
 # 2.指令 javap -verbose -p Hello.class
 # 3.关于本地变量名: 如果编译时java -g 在Constant pool中就会包含本地变量名abc，对调试更友好
 # 4.根据指令  逐行注释见下
