@@ -1,3 +1,104 @@
 分别使用 Xms Xmx 512m 1024m 进行运行,同时使用 sb 每秒 40 线程 支持 60s 进行压力测试
 
+G1gc:
+java -jar -Xms512m -Xmx512m -XX:+UseG1GC -XX:MaxGCPauseMillis=50 -Xloggc:g1Demo.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps xxx.jar
 
+PS C:\windows\system32> sb -u http://localhost:8088/api/hello -c 40 -N60
+Starting at 2020/10/28 19:53:40
+[Press C to stop the test]
+251238  (RPS: 3870.6)
+---------------Finished!----------------
+Finished at 2020/10/28 19:54:45 (took 00:01:05.1418697)
+Status 200:    251238
+
+RPS: 4098 (requests/second)
+Max: 324ms
+Min: 0ms
+Avg: 0.9ms
+
+  50%   below 0ms
+  60%   below 0ms
+  70%   below 0ms
+  80%   below 0ms
+  90%   below 0ms
+  95%   below 1ms
+  98%   below 8ms
+  99%   below 24ms
+99.9%   below 106ms
+
+java -jar -Xms1g -Xmx1g -XX:+UseG1GC -XX:MaxGCPauseMillis=50 -Xloggc:g1Demo2.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps xxx.jar
+PS C:\windows\system32> sb -u http://localhost:8088/api/hello -c 40 -N60
+Starting at 2020/10/28 19:56:26
+[Press C to stop the test]
+274429  (RPS: 4216.7)
+---------------Finished!----------------
+Finished at 2020/10/28 19:57:31 (took 00:01:05.3099886)
+Status 200:    274470
+
+RPS: 4482.5 (requests/second)
+Max: 321ms
+Min: 0ms
+Avg: 0.5ms
+
+  50%   below 0ms
+  60%   below 0ms
+  70%   below 0ms
+  80%   below 0ms
+  90%   below 0ms
+  95%   below 0ms
+  98%   below 5ms
+  99%   below 11ms
+99.9%   below 84ms
+
+
+ParalleGC:
+
+java -jar -Xms512m -Xmx512m -XX:+UseParallelGC -Xloggc:g1Demo.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps xxx.jar
+
+PS C:\windows\system32> sb -u http://localhost:8088/api/hello -c 40 -N 60
+Starting at 2020/10/28 20:01:07
+[Press C to stop the test]
+273598  (RPS: 4166.8)
+---------------Finished!----------------
+Finished at 2020/10/28 20:02:13 (took 00:01:05.7367799)
+Status 200:    273643
+
+RPS: 4481.1 (requests/second)
+Max: 286ms
+Min: 0ms
+Avg: 0.5ms
+
+  50%   below 0ms
+  60%   below 0ms
+  70%   below 0ms
+  80%   below 0ms
+  90%   below 0ms
+  95%   below 1ms
+  98%   below 5ms
+  99%   below 9ms
+99.9%   below 87ms
+
+java -jar -Xms1g -Xmx1g -XX:+UseParallelGC -Xloggc:parGCDemo2.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps
+
+PS C:\windows\system32> sb -u http://localhost:8088/api/hello -c 40 -N 60
+Starting at 2020/10/28 20:04:52
+[Press C to stop the test]
+290684  (RPS: 4458.5)
+---------------Finished!----------------
+Finished at 2020/10/28 20:05:57 (took 00:01:05.3161419)
+Status 200:    290687
+
+RPS: 4756.7 (requests/second)
+Max: 311ms
+Min: 0ms
+Avg: 0.5ms
+
+  50%   below 0ms
+  60%   below 0ms
+  70%   below 0ms
+  80%   below 0ms
+  90%   below 0ms
+  95%   below 0ms
+  98%   below 5ms
+  99%   below 9ms
+99.9%   below 79ms
