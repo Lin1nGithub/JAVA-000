@@ -17,7 +17,7 @@ create table `t_user`
     `id`          bigint    NOT NULL auto_increment comment '用户id',
     `name`        varchar(255)       DEFAULT NULL comment '用户名',
     `gender`      tinyint            DEFAULT NULL comment '用户性别',
-    `mobile`      int            DEFAULT NULL comment '用户手机号',
+    `mobile`      varchar(20)            DEFAULT NULL comment '用户手机号',
     `email`      varchar(255)            DEFAULT NULL comment '用户邮箱',
     `status`      tinyint comment '用户状态',
     `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP comment '用户创建时间',
