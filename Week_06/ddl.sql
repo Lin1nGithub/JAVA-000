@@ -10,7 +10,7 @@ create table `t_merchandise`
     `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '更新时间',
     PRIMARY KEY (`id`)
 ) engine = InnoDB
-  default CHARSET = utf8 comment '商品表';
+  default CHARSET = utf8mb4 comment '商品表';
 
 create table `t_user`
 (
@@ -24,7 +24,7 @@ create table `t_user`
     `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '用户更新时间',
     PRIMARY KEY (`id`)
 ) engine = InnoDB
-  DEFAULT CHARSET = utf8 comment '用户表';
+  DEFAULT CHARSET = utf8mb4 comment '用户表';
 
 create table `t_order`
 (
@@ -39,4 +39,4 @@ create table `t_order`
     `update_time`    TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '订单更新时间',
     PRIMARY KEY (`id`)
 ) engine = InnoDB
-  DEFAULT CHARSET = utf8 comment '订单表';
+  DEFAULT CHARSET = utf8mb4 comment '订单表';

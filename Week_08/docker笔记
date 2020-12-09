@@ -1,0 +1,6 @@
+
+# 启动容器
+docker run -p 3350:3306 --name ds0 -e MYSQL_ROOT_PASSWORD=123456 -d mysql
+
+docker run -p 3351:3306 --name ds1 -e MYSQL_ROOT_PASSWORD=123456 -d mysql
+
